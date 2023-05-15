@@ -1,5 +1,6 @@
 import UIKit
 import CLTypingLabel
+import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
 
@@ -21,6 +22,11 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         
         titleLabel.text = K.appName
+        
+        if Auth.auth().currentUser != nil {
+            // navigate to chat
+            self.performSegue(withIdentifier: K.welcomeSegue, sender: self)
+        }
     }
     
 }
